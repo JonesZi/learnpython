@@ -1,0 +1,48 @@
+# Bytecode-Dateien
+__pycache__/
+*.py[cod]
+
+# Virtuelle Umgebungen
+venv/
+.env/
+.venv/
+
+# Betriebssystemspezifisches
+.DS_Store
+Thumbs.db
+
+# Log-Dateien
+*.log
+
+# Editor-/IDE-spezifisch
+.vscode/
+.idea/
+*.swp
+
+# Test-Berichte und Coverage
+htmlcov/
+.coverage
+.cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# Pytest
+.pytest_cache/
+
+# Temporäre Dateien
+*.tmp
+*.bak
+*.orig
+
+# Datenbank-, Speicher- und Output-Dateien (wenn du später sowas nutzt)
+*.sqlite3
+data.json
+
+# Persönliche Konfigurationsdateien
+*.env
+.env.*
+
+# Optional: Jupyter Notebooks (wenn du keine Notebooks versionieren willst)
+*.ipynb_checkpoints/
