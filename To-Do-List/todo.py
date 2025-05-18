@@ -44,9 +44,27 @@ def mark_task_done(task_index):
     else:
         print("❌ Invalid task index.")
 
+def delete_task(task_index):
+    """Delete a task."""
+    tasks = load_tasks()
+    if 0 <= task_index < len(tasks):
+        deleted_task = tasks.pop(task_index)
+        save_tasks(tasks)
+        print(f"✅ Task '{deleted_task['task']}' deleted.")
+    else:
+        print("❌ Invalid task index.")
+
+def clear_tasks():
+    """Clear all tasks."""
+    if os.path.exists(DATA_FILE):
+        os.remove(DATA_FILE)
+        print("✅ All tasks cleared.")
+    else:
+        print("❌ No tasks to clear.")
+
 def main():
     parser = argparse.ArgumentParser(description="Simple To-Do List CLI")
-    parser.add_argument("command", choices=["list", "add", "done"], help="Command to execute")
+    parser.add_argument("command", choices=["list", "add", "done", "delete", "clear"], help="Command to execute")
     parser.add_argument("task", nargs="?", help="Task name or index")
 
     args = parser.parse_args()
@@ -63,6 +81,13 @@ def main():
             mark_task_done(int(args.task) - 1)
         else:
             print("❌ Please provide a valid task index.")
+    elif args.command == "delete":
+        if args.task and args.task.isdigit():
+            delete_task(int(args.task) - 1)
+        else:
+            print("❌ Please provide a valid task index.")
+    elif args.command == "clear":
+        clear_tasks()
 
 if __name__ == "__main__":
     main()
